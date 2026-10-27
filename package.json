@@ -1,0 +1,36 @@
+{
+  "name": "loan-engine-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that lets Claude run loan calculations through my Java loan-engine API. The AI talks, the API calculates.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "loan-engine-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liza-dotcom/loan-engine-mcp.git"
+  },
+  "keywords": ["mcp", "claude", "model-context-protocol", "loan-calculator", "typescript"],
+  "author": "Liza Choudhry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liza-dotcom/loan-engine-mcp/issues"
+  },
+  "homepage": "https://github.com/liza-dotcom/loan-engine-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
