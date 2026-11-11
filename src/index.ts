@@ -11,7 +11,8 @@ async function callApi(path: string, body: unknown) {
     const text = await postLoan(path, body);
     return { content: [{ type: "text" as const, text }] };
   } catch (err) {
-    const message = err instanceof LoanApiError
+  console.error("Loan API call failed:", err);   // add this line
+  const message = err instanceof LoanApiError
       ? `The loan API rejected the request (${err.status}): ${err.body}`
       : "The loan API could not be reached. Try again shortly.";
     return { isError: true, content: [{ type: "text" as const, text: message }] };

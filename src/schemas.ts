@@ -19,10 +19,13 @@ export const loanSchema = z.object({
   startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional()
     .describe("Optional start date, YYYY-MM-DD"),
   rateChangeSchedule: z.array(z.object({
-    effectiveMonth: z.number().int().min(1),
-    newAnnualRate: z.number().min(0).max(100),
+    effectiveMonth: z.number().int().min(1)
+      .describe("Month the new rate starts, counted from the loan start (year 3 = month 25)"),
+    newAnnualRate: z.number().min(0).max(100)
+      .describe("New annual rate as a percent: 5.5 means 5.5%"),
   })).optional()
-    .describe("VARIABLE loans only: the month each new rate starts"),
+    .describe("Required for VARIABLE loans: when each new rate starts. " +
+              "If the user hasn't said how the rate will change, ask them before calling the tool."),
   interestOnlyMonths: z.number().int().min(0).optional()
     .describe("INTEREST_ONLY loans only: months before principal payments start"),
-});   
+});                                                                                          
